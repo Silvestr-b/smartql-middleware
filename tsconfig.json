@@ -10,7 +10,7 @@
         "noImplicitThis": true,
         "noImplicitUseStrict": false,
         "strictNullChecks": true,
-        "target": "es6",
+        "target": "es2017",
         "rootDir": "src",
         "outDir": "lib",
         "experimentalDecorators": true,

@@ -47,7 +47,7 @@ describe('smartql-runner', () => {
 		it('middleware not setted', () => {
 			const runner = new Runner();
 
-			expect(() => runner.run(query, options, response)).to.throw('Cannot find registered middlewares');		
+			expect(() => runner.run(query, options)).to.throw('Cannot find registered middlewares');		
 		})
 
 		it('middleware setted', () => {
@@ -61,6 +61,17 @@ describe('smartql-runner', () => {
 			expect(pluginSpy.calledWith(query, options, response)).to.be.true;	
 		})
 
+		it('without params and response', () => {
+			const runner = new Runner();
+			const plugin = new Plugin();
+			const pluginSpy = spy(plugin, 'execute');
+
+			runner.next(plugin);
+			runner.run(query);
+
+			expect(pluginSpy.args[0][1]).to.be.be.deep.equal({});
+			expect(pluginSpy.args[0][2]).to.be.be.deep.equal({});	
+		})
 	})	
 
 })

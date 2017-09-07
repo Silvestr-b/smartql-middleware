@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import { stub } from 'sinon'
+import { stub, spy } from 'sinon'
 import { ast, middlewares } from '../../interfaces'
 import { Middleware } from '../../'
 
@@ -64,6 +64,15 @@ describe('smartql-middleware', () => {
 		})	
 
 		it('without_next', async () => {
+			const plugin = new Plugin();
+			
+			const result = await plugin.execute(query, options, response);
+
+			expect(result).to.be.equal(response)
+		})
+
+		it('execute not override', async () => {
+			class Plugin extends Middleware {}
 			const plugin = new Plugin();
 			
 			const result = await plugin.execute(query, options, response);

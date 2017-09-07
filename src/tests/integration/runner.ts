@@ -2,14 +2,15 @@ import { expect } from 'chai'
 import { Parser } from 'smartql-parser'
 import { ast, middlewares } from '../../interfaces'
 import { Runner } from '../../implementations/runner'
+import { Middleware } from '../../implementations/middleware'
 import { SyncMiddleWare, AsyncMiddleWare } from './mocks'
 
 
 describe('smartql-runner', () => {
 	const options = {};
-	const response = 'RESPONSE'; 
+	const response = 'RESPONSE';
 
-	it('Runner can use as chain', async () => {
+	it('Runner can be used as chain', async () => {
 		const astQuery = Parser().parse({
 			method: 'GET',
 			resources: [{
@@ -59,33 +60,11 @@ describe('smartql-runner', () => {
 
 		expect(result).to.be.equal(response)
 	})
+
 })
 
 
 
-
-
-
-
-// раннер
-// 	- параметры
-// 		- те что переданы
-// 	- запрос
-// 		- является запросом
-// 		- во всех мидлах
-
-// мидла
-// 	- next
-// 		- должен добавлять в цепочку
-// 	- applyNext
-// 		- должен вызывать execute на следующем 
-// 		- должен возвращать request если следующего нет
-// 	- execute
-// 		- вызывает applyNext
-// 	- цепочка синхронных
-// 		- очередность 
-// 	- цепочка асинхронных
-// 		- очередность
 
 
 

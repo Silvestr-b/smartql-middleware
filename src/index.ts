@@ -103,17 +103,17 @@ export { Runner, Middleware }
 
 
 // Вот так храним условия
-const obj = {
-	User: [{
-		conditions: obj => ((obj.age > 18) || (obj.name === 'Donald')),
-		queryId: '_qwdk1bh32' 
-	}]
-}
+// const obj = {
+// 	User: [{
+// 		conditions: obj => ((obj.age > 18) || (obj.name === 'Donald')),
+// 		queryId: '_qwdk1bh32' 
+// 	}]
+// }
 
-// Вот так храним запросы
-const queries = {
-	_qwdk1bh32: '{resource:"User", where: [{age: {">": 18}},{name: "Donald"}]}'
-}
+// // Вот так храним запросы
+// const queries = {
+// 	_qwdk1bh32: '{resource:"User", where: [{age: {">": 18}},{name: "Donald"}]}'
+// }
 
 
 // При коннекте с редисом запрашиваем все запросы заново и парсим, затем добавляем в реестр

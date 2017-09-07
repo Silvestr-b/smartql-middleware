@@ -10,11 +10,11 @@ abstract class Middleware implements middlewares.IMiddleware {
 		return nextMiddleware
 	}
 
-	async execute(query: ast.IQuery, params: middlewares.MiddlewareParams, response: string){
+	async execute(query: ast.IQuery, params: middlewares.MiddlewareParams, response: any){
 		return this.applyNext(query, params, response)
 	}
 
-	async applyNext(query: ast.IQuery, params: middlewares.MiddlewareParams, response: string){
+	async applyNext(query: ast.IQuery, params: middlewares.MiddlewareParams, response: any){
 		if(!this.nextMiddleware) return response
 			
 		return this.nextMiddleware.execute(query, params, response)
